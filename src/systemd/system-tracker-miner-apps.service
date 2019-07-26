@@ -1,0 +1,15 @@
+[Unit]
+Description=tracker-miner-apps system service
+Documentation=man:tracker-control((1)
+After=system-tracker-store.service
+
+[Service]
+Type=simple
+GuessMainPID=no
+Environment="TRACKER_BUS_TYPE=system"
+ExecStart=/usr/lib/tracker/tracker-miner-apps
+Restart=on-abort
+User=mdssvc
+
+[Install]
+WantedBy=multi-user.target

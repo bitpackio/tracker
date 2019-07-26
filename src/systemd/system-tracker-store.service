@@ -1,0 +1,15 @@
+[Unit]
+Description=tracker-store system service
+Documentation=man:tracker-store(1)
+After=dbus.service
+
+[Service]
+Type=simple
+GuessMainPID=no
+Environment="TRACKER_BUS_TYPE=system"
+ExecStart=/usr/lib/tracker/tracker-store
+Restart=on-abort
+User=mdssvc
+
+[Install]
+WantedBy=multi-user.target

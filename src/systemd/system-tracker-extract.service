@@ -1,1 +1,15 @@
+[Unit]
+Description=tracker-extract system service
+Documentation=man:tracker-extract(1)
+After=system-tracker-miner-apps.service system-tracker-miner-fs.service
 
+[Service]
+Type=simple
+GuessMainPID=no
+Environment="TRACKER_BUS_TYPE=system"
+ExecStart=/usr/lib/tracker/tracker-extract
+Restart=on-abort
+User=mdssvc
+
+[Install]
+WantedBy=multi-user.target
